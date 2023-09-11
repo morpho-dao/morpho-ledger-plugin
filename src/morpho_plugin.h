@@ -56,11 +56,13 @@ typedef enum {
     _POOL_TOKEN_ADDRESS_SUPPLY_REPAY,
     _ON_BEHALF,
     _AMOUNT_SUPPLY_REPAY,
+    _SUPPLY_REPAY_IGNORED,
 } supply_repay_parameters;
 
 typedef enum {
     _POOL_TOKEN_ADDRESS_WITHDRAW_BORROW,
     _AMOUNT_WITHDRAW_BORROW,
+    _WITHDRAW_BORROW_IGNORED,
 } withdraw_borrow_parameters;
 
 typedef enum {
