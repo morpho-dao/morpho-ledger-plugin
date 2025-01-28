@@ -30,10 +30,8 @@ static void handle_supply_and_repay(ethPluginProvideParameter_t *msg, context_t 
         case _AMOUNT_SUPPLY_REPAY:
             copy_parameter(context->amount, msg->parameter, sizeof(context->amount));
             break;
-        default:
-            PRINTF("Param not supported: %d\n", context->next_param);
-            msg->result = ETH_PLUGIN_RESULT_ERROR;
-            break;
+        case _SUPPLY_REPAY_IGNORED:
+            return;
     }
     context->next_param++;
 }
@@ -46,10 +44,8 @@ static void handle_withdraw_and_borrow(ethPluginProvideParameter_t *msg, context
         case _AMOUNT_WITHDRAW_BORROW:
             copy_parameter(context->amount, msg->parameter, sizeof(context->amount));
             break;
-        default:
-            PRINTF("Param not supported: %d\n", context->next_param);
-            msg->result = ETH_PLUGIN_RESULT_ERROR;
-            break;
+        case _WITHDRAW_BORROW_IGNORED:
+            return;
     }
     context->next_param++;
 }
@@ -67,10 +63,6 @@ static void handle_claim_rewards(ethPluginProvideParameter_t *msg, context_t *co
             break;
         case CLAIM_REWARDS_IGNORED:
             return;
-        default:
-            PRINTF("Param not supported: %d\n", context->next_param);
-            msg->result = ETH_PLUGIN_RESULT_ERROR;
-            break;
     }
     context->next_param++;
 }
@@ -82,10 +74,6 @@ static void handle_claim(ethPluginProvideParameter_t *msg, context_t *context) {
             break;
         case CLAIM_IGNORED:
             return;
-        default:
-            PRINTF("Param not supported: %d\n", context->next_param);
-            msg->result = ETH_PLUGIN_RESULT_ERROR;
-            break;
     }
     context->next_param++;
 }
